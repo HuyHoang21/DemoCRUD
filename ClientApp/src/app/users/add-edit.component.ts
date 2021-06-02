@@ -29,8 +29,8 @@ export class AddEditComponent implements OnInit {
         // password not required in edit mode
 
         this.form = this.formBuilder.group({
-            firstname: ['', Validators.required],
-            lastname: ['', Validators.required],
+            firstName: ['', Validators.required],
+            lastName: ['', Validators.required],
             username: ['', [Validators.required]],
         });
 

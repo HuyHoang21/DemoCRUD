@@ -9,16 +9,9 @@ const baseUrl = `https://localhost:5001/login`;
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
-    private currentAccountSubject: BehaviorSubject<Account>;
     public currentAccount: Observable<Account>;
 
     constructor(private http: HttpClient) {
-        this.currentAccountSubject = new BehaviorSubject<Account>(JSON.parse(localStorage.getItem('currentAccount')));
-        this.currentAccount = this.currentAccountSubject.asObservable();
-    }
-
-    public get currentAccountValue(): Account {
-        return this.currentAccountSubject.value;
     }
 
     login(username: string, password:string) {
@@ -26,9 +19,4 @@ export class AuthenticationService {
         return this.http.post<any>(baseUrl, { username, password });
     }
 
-    // logout() {
-    //     // remove Account from local storage and set current Account to null
-    //     localStorage.removeItem('currentAccount');
-    //     this.currentAccountSubject.next(null);
-    // }
 }
