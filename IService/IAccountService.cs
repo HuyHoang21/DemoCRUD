@@ -5,7 +5,7 @@ namespace DemoUI.IService
 {
   public interface IAccountService
   {
-    bool Insert(AccountModels oAccount);
+    bool Insert(LoginModels oAccount);
     bool Delete(int id);
     AccountModels Get(int Id);
     public AccountType Login(LoginModels oLogin);

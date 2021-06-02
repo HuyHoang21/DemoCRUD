@@ -7,7 +7,7 @@ import {Account} from '@app/_models/account'
 import { Observable } from 'rxjs';
 
 const baseUrl = `${environment.apiUrl}`;
-
+const registerUrl = `${environment.registerUrl}`
 @Injectable({ providedIn: 'root' })
 export class UserService {
     constructor(private http: HttpClient) { }
@@ -33,7 +33,7 @@ export class UserService {
     delete(id: number) {
         return this.http.delete(`${baseUrl}/${id}`);
     }
-    register(account: Account) {
-        return this.http.post(`${baseUrl}/users/register`, account);
+    register(account: any) {
+        return this.http.post(`${registerUrl}/account`, account);
     }
 }

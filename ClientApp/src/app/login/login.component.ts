@@ -11,7 +11,7 @@ export class LoginComponent implements OnInit {
     loading = false;
     submitted = false;
     returnUrl: string;
-
+    account = null;
     constructor(
         private formBuilder: FormBuilder,
         private route: ActivatedRoute,
@@ -54,11 +54,13 @@ export class LoginComponent implements OnInit {
             .pipe(first())
             .subscribe(
                 data => {
-                    this.router.navigate([this.returnUrl]);
-                },
-                error => {
-                    this.alertService.error(error);
+                    if (data.id != 0){
+                    this.router.navigate(['/users']);
+                    }
+                    else {
+                        this.alertService.error("Wrong username or password");
                     this.loading = false;
+                    }
                 });
     }
 }

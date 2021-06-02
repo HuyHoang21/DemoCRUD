@@ -21,19 +21,14 @@ export class AuthenticationService {
         return this.currentAccountSubject.value;
     }
 
-    login(accountname: string, password:string) {
-        return this.http.post<any>(`${baseUrl}`, { accountname, password })
-            .pipe(map(Account => {
-                // store Account details and jwt token in local storage to keep Account logged in between page refreshes
-                localStorage.setItem('currentAccount', JSON.stringify(Account));
-                this.currentAccountSubject.next(Account);
-                return Account;
-            }));
+    login(username: string, password:string) {
+        // return this.http.post(baseUrl, {username,password});
+        return this.http.post<any>(baseUrl, { username, password });
     }
 
-    logout() {
-        // remove Account from local storage and set current Account to null
-        localStorage.removeItem('currentAccount');
-        this.currentAccountSubject.next(null);
-    }
+    // logout() {
+    //     // remove Account from local storage and set current Account to null
+    //     localStorage.removeItem('currentAccount');
+    //     this.currentAccountSubject.next(null);
+    // }
 }

@@ -29,7 +29,7 @@ namespace DemoUI.Controllers
 
     // POST api/values
     [HttpPost]
-    public bool Insert([FromBody] AccountModels oAccount)
+    public bool Insert([FromBody] LoginModels oAccount)
     {
       return _oAccount.Insert(oAccount);
     }
